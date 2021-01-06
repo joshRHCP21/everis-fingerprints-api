@@ -1,0 +1,6 @@
+com\bank\fingerprints\controller\FingerprintController.class
+com\bank\fingerprints\entity\Fingerprint.class
+com\bank\fingerprints\FingerprintsApiApplication.class
+com\bank\fingerprints\entity\FingerprintResponse.class
+com\bank\fingerprints\service\Impl\FingerPrintServiceImpl.class
+com\bank\fingerprints\service\FingerPrintService.class
