@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fingerprints-back
+  labels:
+    app: fingerprints-back1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fingerprints-back1
+  template:
+    metadata:
+      labels:
+        app: fingerprints-back1
+    spec:
+      containers:
+        - name: fingerprints-back1
+          image: josefirstacr.azurecr.io/test
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+      imagePullSecrets:
+        - name: regcred
+---
+kind: Service
+apiVersion: v1
+metadata:
+   name: fingerprints-balancer
+spec:
+  selector:
+    app: fingerprints-balancer
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
